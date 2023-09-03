@@ -5,7 +5,15 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'login_bg': "url('./src/assets/login_img.png')",
+        
+      },
+      fontFamily:{
+        'Inter':['Inter']
+      }
+    },
   },
   plugins: [],
 }

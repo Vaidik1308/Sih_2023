@@ -6,7 +6,7 @@ function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <div className='bg-green-500'>
+    <div className='w-full min-h-[100vh] font-Inter h-fit'>
       <CommonNavigation/>
     </div>
   )
