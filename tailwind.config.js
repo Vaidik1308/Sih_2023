@@ -8,6 +8,8 @@ export default {
     extend: {
       backgroundImage: {
         'login_bg': "url('./src/assets/login_img.png')",
+        'back': "url('./src/assets/home/back.png')",
+        'back_img': "url('./src/assets/home/back_img.png')",
         
       },
       fontFamily:{
