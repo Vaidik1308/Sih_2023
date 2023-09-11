@@ -15,8 +15,8 @@ const Home = () => {
       <section className='w-full ml-2'>
         <button className='bg-[#ED8129] rounded-[0.5rem] p-3 w-[18%] text-white text-[1.5rem] font-[500]'>Signup for free</button>
       </section>
-      <section className='bg-white w-[65%] h-[15vh] shadow-lg rounded-[5px] flex justify-start absolute bottom-[-13%] justify-self-center translate-x-[250px] p-2 items-center gap-6' >
-        <article className='w-fit ml-4'>
+      <section className='bg-white w-fit px-4 h-[15vh] shadow-lg rounded-[5px] flex justify-start absolute bottom-[-13%] justify-self-center translate-x-[40%] p-2 items-center gap-6' >
+        <article className='w-fit '>
           <h2 className='text-[2.8rem] text-[#0CB407] font-[600]'>500+</h2>
         </article>
         <article className='w-fit flex flex-col justify-center items-center'>

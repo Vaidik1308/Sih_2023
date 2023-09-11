@@ -5,6 +5,7 @@ import Register from '../Pages/Register'
 import Home from '../Pages/Home'
 import About from '../Pages/About'
 import Contact from '../Pages/Contact'
+import Course from '../Pages/Course/Course'
 
 const CommonNavigation = () => {
   return (
@@ -15,6 +16,7 @@ const CommonNavigation = () => {
             <Route path='/register' element={<Register/>}/>
             <Route path='/about' element={<About/>}/>
             <Route path='/contact' element={<Contact/>}/>
+            <Route path='/course' element={<Course/>}/>
         </Routes>
     </>
   )

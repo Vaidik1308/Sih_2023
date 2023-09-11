@@ -6,6 +6,9 @@ export default {
   ],
   theme: {
     extend: {
+      gridTemplateColumns:{
+        '8': '1fr 4fr',
+      },
       backgroundImage: {
         'login_bg': "url('./src/assets/login_img.png')",
         'back': "url('./src/assets/home/back.png')",
