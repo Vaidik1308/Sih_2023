@@ -1,26 +1,36 @@
-import React, { useContext } from 'react'
+import React, { useContext,useState } from 'react'
 import Header from '../../Components/CoursePage/Header'
-import Sidebar from '../../Components/CoursePage/Sidebar'
 import CourseContent from './CourseContent'
 import Progress from './Progress'
 import DataContext from '../../context/DataContext'
+import { Outlet } from 'react-router-dom'
+
+
 const Course = () => {
 
-  const { isProgress,setIsProgress,isLearn,setIsLearn } = useContext(DataContext)
-
+  // const { isProgress,setIsProgress,isLearn,setIsLearn } = useContext(DataContext)
+  const [isOption1,setIsOption1] = useState<boolean>(true)
+  const [isOption2,setIsOption2] = useState<boolean>(false) 
   return (
-    <main className=' grid grid-cols-8 w-full h-fit'>
-        <Sidebar/>
         <div className='flex flex-col w-full'>
-            <Header/>
-            {isLearn && (
+            <Header
+              isOption1 = {isOption1} 
+              setIsOption1={setIsOption1}
+              isOption2={isOption2}
+              setIsOption2={setIsOption2}
+              header1='Learn'
+              header2='Progress'
+              path1={'/skills/courses'}
+              path2={'/skills/progress'}
+            />
+            {/* {isOption1 && (
               <CourseContent/>
             )}
-            {isProgress && (
+            {isOption2 && (
               <Progress/>
-            )}
+            )} */}
+            <Outlet/>
         </div>        
-    </main>
   )
 }
 
