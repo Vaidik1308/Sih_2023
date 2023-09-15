@@ -19,12 +19,7 @@ const RuralAid = () => {
               path1 = {'/ruralaid/govschemes'}
               path2 = {'/ruralaid/ngofunding'}
             />
-            {/* {isOption1 && (
-              <GovScheme/>
-            )}
-            {isOption2 && (
-              <NgoFunding/>
-            )} */}
+            
             <Outlet/>
     </div> 
   )

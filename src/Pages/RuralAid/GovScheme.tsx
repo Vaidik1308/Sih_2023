@@ -2,7 +2,7 @@ import React from 'react'
 import Scrollbar from "react-custom-scrollbars";
 import pic1 from '../../assets/ruralAid/pic1.png'
 import {FiArrowUpRight} from 'react-icons/fi'
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const GovScheme = () => {
   const location = useLocation()
@@ -24,10 +24,12 @@ const GovScheme = () => {
                     <p className='font-[500] '>For all Indian citizens</p>
                     <p className='text-[0.75rem]'>Started from 2003</p>
                 </div>
-                <button className='bg-[#43D02C] w-[55%] p-2 text-white text-[1rem] font-[600] rounded-lg flex items-center justify-center gap-1'>
-                    <p>Apply Now</p>
-                    <FiArrowUpRight className='text-[1.5rem]'/>
-                </button>
+                <Link to='/features/ruralaid/govschemes/1'>
+                    <button className='bg-[#43D02C] w-[55%] p-2 text-white text-[1rem] font-[600] rounded-lg flex items-center justify-center gap-1'>
+                        <p>Apply Now</p>
+                        <FiArrowUpRight className='text-[1.5rem]'/>
+                    </button>
+                </Link>
             </article>
             <article>
                 <img src={pic1} alt="" />

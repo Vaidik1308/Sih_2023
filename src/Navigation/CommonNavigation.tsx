@@ -17,6 +17,9 @@ import CourseContent from '../Pages/Course/CourseContent'
 import Progress from '../Pages/Course/Progress'
 import Missing from '../Pages/MIssing'
 import Account from '../Pages/Account/Account'
+import GovSchemeDetails from '../Pages/RuralAid/govScheme/GovSchemeDetails'
+import CourseDetails from '../Pages/Course/CourseDetails/CourseDetails'
+import NgoDetials from '../Pages/RuralAid/NgoFunding/NgoDetials'
 
 const CommonNavigation = () => {
   return (
@@ -33,13 +36,16 @@ const CommonNavigation = () => {
               <Route path='skills' element={<Course/>} >
                 <Route index element={<CourseContent/>}/>
                 <Route path='courses' element={<CourseContent/>}/>
+                <Route path='courses/:id' element={<CourseDetails/>}/>
                 <Route path='progress' element={<Progress/>}/>
                 <Route path='*' element={<Missing/>} />
               </Route>
               <Route path='ruralaid' element={<RuralAid/>} >
                 <Route index element={<GovScheme/>} />
-                <Route path='govschemes' element={<GovScheme/>} />
+                <Route path='govschemes' element={<GovScheme/>}/>
+                <Route path='govschemes/:id' element={<GovSchemeDetails/>} />
                 <Route path='ngofunding' element={<NgoFunding/>} />
+                <Route path='ngofunding/:id' element={<NgoDetials/>} />
                 <Route path='*' element={<Missing/>} />
               </Route>
               <Route path='mentor' element={<Mentor/>} >
