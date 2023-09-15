@@ -1,9 +1,11 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import {Link} from 'react-router-dom'
 import laptop from '../assets/signUp/laptop.png';
 import person from '../assets/signUp/person.png';
 import rightCircle from '../assets/signUp/right_circle.png';
 import { Autocomplete,TextField,Typography } from '@mui/material';
+import { log } from 'console';
+import axios from 'axios';
 
 
 
@@ -13,9 +15,52 @@ const qualification = ['Btech', 'Teacher'];
 const Register = () => {
   const [genderType, setGenderType] = useState<string | null>(gender[0]);
   const [inputGender, setInputGender] = useState('');
-
+  const [name,setName] = useState<string>('')
+  const [number,setNumber] = useState<string>('')
+  const [mail,setMail] = useState<string>('')
+  const [date,setDate] = useState<string>('')
+  const [password,setPassword] = useState<string>('')
   const [qualificationType, setQualificationType] = useState<string | null>(qualification[0]);
   const [inputQualification, setInputQualification] = useState('');
+  const [data ,setData] = useState({})
+
+  const handleSubmit = () => {
+    if(name){
+      const newData = {
+        username : name,
+        password:password,
+        email:mail,
+        phone:number,
+        gender:inputGender,
+        DOB:date
+      }
+      setData(newData)
+      console.log(newData);
+    }
+    
+  }
+  useEffect(() => {
+    const sendData = async () => {
+      fetch('http://localhost:8080/register', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ value: data }),
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Response from backend:', data);
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
+
+    }
+   
+    sendData()  
+  }, [data])
+  
   return (
     <main className='flex w-full justify-center items-center  min-h-[100vh] h-fit'>
       <section className='w-[55%] relative flex flex-col items-center gap-3'>
@@ -31,6 +76,8 @@ const Register = () => {
           <div className='flex flex-col w-full'>
             <label className='text-[18px]' htmlFor="fullName">Full Name</label>
             <input 
+              value={name}
+              onChange={(e) => setName(e.target.value)}
               className='bg-[#ffffff] border-[#aeaeae] border-solid focus:border-[#FF8541] rounded-[4px] outline-none border-[1px] p-[0.45rem]'
               type="text" 
               name="fullName" 
@@ -39,21 +86,36 @@ const Register = () => {
             />
           </div>
           <div className='flex flex-col w-full'>
-            <label className='text-[18px]' htmlFor="fullName">Phone Number</label>
+            <label className='text-[18px]' htmlFor="Pnumber">Phone Number</label>
             <input 
               required
+              value={number}
+              onChange={(e) => setNumber(e.target.value)}
               type="number" 
-              name="fullName" 
-              id="fullName" 
+              name="Pnumber" 
+              id="Pnumber" 
               className='bg-[#ffffff] border-[#aeaeae] border-solid focus:border-[#FF8541] rounded-[4px] outline-none border-[1px]  p-[0.45rem]'
             />
           </div>
           <div className='flex flex-col w-full'>
-            <label className='text-[18px]' htmlFor="fullName">Email</label>
+            <label className='text-[18px]' htmlFor="email">Email</label>
             <input 
               type="email" 
-              name="fullName" 
-              id="fullName" 
+              value={mail}
+              onChange={(e) => setMail(e.target.value)}
+              name="email" 
+              id="email" 
+              className='bg-[#ffffff] border-[#aeaeae] border-solid focus:border-[#FF8541] rounded-[4px] outline-none border-[1px] p-[0.45rem]'
+            />
+          </div>
+          <div className='flex flex-col w-full'>
+            <label className='text-[18px]' htmlFor="password">Password:</label>
+            <input 
+              type="text" 
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              name="password" 
+              id="password" 
               className='bg-[#ffffff] border-[#aeaeae] border-solid focus:border-[#FF8541] rounded-[4px] outline-none border-[1px] p-[0.45rem]'
             />
           </div>
@@ -78,7 +140,13 @@ const Register = () => {
             </div>
             <div>
               <Typography sx={{fontSize:"18px"}}>Date</Typography>
-              <TextField size='small' sx={{width:180,borderRadius:"8px !important"}} type='date'/>
+              <TextField 
+                size='small' 
+                sx={{width:180,borderRadius:"8px !important"}} 
+                type='date'
+                value={date}
+                onChange={(e) => setDate(e.target.value)}
+              />
 
             </div>
           </div>
@@ -93,7 +161,7 @@ const Register = () => {
               onInputChange={(event, newInputValue) => {
                 setInputQualification(newInputValue);
               }}
-              id="controllable-states-demo"
+              id="qualification"
               options={qualification}
               size='small'
               sx={{ width: "100%", }}
@@ -101,7 +169,7 @@ const Register = () => {
             />
           </div>
           <div className='flex justify-center w-full items-center h-[15vh]'>
-            <button  type='submit' className='bg-[#ED8129] text-[white] text-[1.3rem] w-[35%] p-1 rounded-[8px]'>Signup </button>
+            <button onClick={() => handleSubmit()}  type='submit' className='bg-[#ED8129] text-[white] text-[1.3rem] w-[35%] p-1 rounded-[8px]'>Signup </button>
           </div>
         </form>
       </section> 

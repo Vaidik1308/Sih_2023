@@ -20,6 +20,9 @@ import Account from '../Pages/Account/Account'
 import GovSchemeDetails from '../Pages/RuralAid/govScheme/GovSchemeDetails'
 import CourseDetails from '../Pages/Course/CourseDetails/CourseDetails'
 import NgoDetials from '../Pages/RuralAid/NgoFunding/NgoDetials'
+import Jobs from '../Pages/Jobs/Jobs'
+import AllJobs from '../Pages/Jobs/AllJobs'
+import SavedJobs from '../Pages/Jobs/SavedJobs'
 
 const CommonNavigation = () => {
   return (
@@ -33,6 +36,10 @@ const CommonNavigation = () => {
             <Route path='/features' element={<Features/>} >
               <Route index element={<Course/>} />
               <Route path='account' element={<Account/>}/>
+              <Route path='jobs' element={<Jobs/>} >
+                <Route index path='alljobs' element={<AllJobs/>} />
+                <Route index path='savedjobs' element={<SavedJobs/>} />
+              </Route>
               <Route path='skills' element={<Course/>} >
                 <Route index element={<CourseContent/>}/>
                 <Route path='courses' element={<CourseContent/>}/>

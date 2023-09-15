@@ -50,8 +50,8 @@ const Navbar = () => {
         <Link className='px-4 p-1' to='/login'>
           <button className='text-[1.5rem]'>Login</button>
         </Link>
-        <Link to=''>
-          <button className='bg-[#0CB407] px-[2.5rem] rounded-[2px] p-1 text-white text-[1.5rem]'>Signup</button>
+        <Link to='/register'>
+          <button className='bg-[#0CB407] px-[2.5rem] rounded-[2px] p-1 text-white text-[1.5rem] rounded-lg'>Signup</button>
         </Link>
       </section>
     </main>

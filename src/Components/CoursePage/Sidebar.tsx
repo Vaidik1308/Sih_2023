@@ -9,7 +9,7 @@ const Sidebar = () => {
   console.log(location);
   
   return (
-    <main className='bg-[#292929] text-white w-[100%] min-h-full h-fit rounded-r-[20px]'>
+    <main className='bg-[#292929] text-white w-[100%] min-h-full h-[100vh] rounded-r-[20px]'>
       <AccountBar/>
       <hr />
       <SideNav/>

@@ -13,7 +13,9 @@ const Home = () => {
         <p className='text-[1.125rem] '>This is a dedicated online platform committed to bridging the educational gap in rural communities. Our mission is to bring quality education right to your doorstep, empowering rural learners with knowledge, skills, and opportunities that were once out of reach.</p>
       </section>
       <section className='w-full ml-2'>
+        <Link to='/register'>
         <button className='bg-[#ED8129] rounded-[0.5rem] p-3 w-[18%] text-white text-[1.5rem] font-[500]'>Signup for free</button>
+        </Link>
       </section>
       <section className='bg-white w-fit px-4 h-[15vh] shadow-lg rounded-[5px] flex justify-start absolute bottom-[-13%] justify-self-center translate-x-[40%] p-2 items-center gap-6' >
         <article className='w-fit '>

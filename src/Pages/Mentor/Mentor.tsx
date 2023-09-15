@@ -1,6 +1,5 @@
 import React,{useState} from 'react'
 import Header from '../../Components/CoursePage/Header'
-import FindMentor from './FindMentor'
 import { Outlet } from 'react-router-dom'
 
 const Mentor = () => {
