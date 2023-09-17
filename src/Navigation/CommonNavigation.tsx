@@ -23,11 +23,16 @@ import NgoDetials from '../Pages/RuralAid/NgoFunding/NgoDetials'
 import Jobs from '../Pages/Jobs/Jobs'
 import AllJobs from '../Pages/Jobs/AllJobs'
 import SavedJobs from '../Pages/Jobs/SavedJobs'
+import MentorDashboard from '../MentorPages/MentorDashboard/MentorDashboard'
+import MentorSignUp from '../MentorPages/MentorSignUp'
+import MentorLogin from '../MentorPages/MentorLogin'
 
 const CommonNavigation = () => {
   return (
     <>
         <Routes>
+
+            {/* User Routes */}
             <Route path='/' element={<Home/>} />
             <Route path='/login' element={<Login/>} />
             <Route path='/register' element={<Register/>}/>
@@ -62,6 +67,16 @@ const CommonNavigation = () => {
                 <Route path='*' element={<Missing/>} />
               </Route>
               <Route path='/features/*' element={<Missing/>} />
+            </Route>
+
+
+            {/* Mentor Routes */}
+            <Route path='/mentorSignUp' element={<MentorSignUp/>} />
+            <Route path='/mentorLogin' element={<MentorLogin/>} />
+            <Route path='/mentor/:mentorId' element={<MentorDashboard/>} >
+              <Route path='statistics' >
+                <Route index path=''/>
+              </Route>
             </Route>
             <Route path='*' element={<Missing/>} />
         </Routes>

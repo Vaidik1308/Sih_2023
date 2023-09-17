@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState,useContext} from 'react'
 import { Link } from 'react-router-dom'
 import {FiArrowUpRight} from 'react-icons/fi'
 import {AiTwotoneHeart} from 'react-icons/ai'
@@ -7,10 +7,13 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import DataContext from '../../context/DataContext'
+
 // import pic1
 
 const AllJobs = () => {
     const [language, setLanguage] = useState('');
+    const {featuresData} = useContext(DataContext);
 
     const handleChange = (event) => {
         setLanguage(event.target.value);
@@ -36,16 +39,12 @@ const AllJobs = () => {
         </FormControl>
     </section>
     <main className='w-[95%] p-4 flex flex-wrap gap-8 justify-between mx-auto'>
-        <SingleJobs/>
-        <SingleJobs/>
-        <SingleJobs/>
-        <SingleJobs/>
-        <SingleJobs/>
-        <SingleJobs/>
-        <SingleJobs/>
-        <SingleJobs/>
-        <SingleJobs/>
-        <SingleJobs/>
+        {
+            featuresData.map((data) => (
+                <SingleJobs  data={data} />
+            ))
+        }
+        
     </main>
     </>
   )

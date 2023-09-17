@@ -1,11 +1,15 @@
-import React,{useState,useEffect} from 'react'
+import React,{useState,useEffect,useContext} from 'react'
 import {Link} from 'react-router-dom'
 import laptop from '../assets/signUp/laptop.png';
 import person from '../assets/signUp/person.png';
 import rightCircle from '../assets/signUp/right_circle.png';
 import { Autocomplete,TextField,Typography } from '@mui/material';
-import { log } from 'console';
-import axios from 'axios';
+import { auth } from '../config/firebase-config';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { useNavigate } from 'react-router-dom';
+import { collection, addDoc, getDocs } from "firebase/firestore"
+import { db } from '../config/firebase-config';
+import DataContext from '../context/DataContext';
 
 
 
@@ -13,6 +17,8 @@ const gender = ['male', 'female'];
 const qualification = ['Btech', 'Teacher'];
 
 const Register = () => {
+  const {userData,setUserData} = useContext(DataContext)
+  const navigate = useNavigate()
   const [genderType, setGenderType] = useState<string | null>(gender[0]);
   const [inputGender, setInputGender] = useState('');
   const [name,setName] = useState<string>('')
@@ -24,42 +30,56 @@ const Register = () => {
   const [inputQualification, setInputQualification] = useState('');
   const [data ,setData] = useState({})
 
-  const handleSubmit = () => {
-    if(name){
-      const newData = {
-        username : name,
-        password:password,
-        email:mail,
-        phone:number,
-        gender:inputGender,
-        DOB:date
-      }
-      setData(newData)
-      console.log(newData);
-    }
-    
-  }
-  useEffect(() => {
-    const sendData = async () => {
-      fetch('http://localhost:8080/register', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ value: data }),
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log('Response from backend:', data);
-    })
-    .catch((error) => {
-        console.error('Error:', error);
-    });
-
-    }
+  const signUp = async (id) => {
+    // e.preventDefault();  
    
-    sendData()  
-  }, [data])
+    try {
+        const docRef = await addDoc(collection(db, "studentuserDB"), {
+          
+          name : name,
+          email:mail,
+          phone:number,
+          gender:inputGender,
+          dob:date,    
+        });
+        setUserData({name,inputGender,number,date})
+        
+        console.log("Document written with ID: ", docRef.id);
+        navigate('/features/skills')
+      } catch (e) {
+        console.error("Error adding document: ", e);
+      }
+    
+}
+  const onSubmit = async () => {
+    // e.preventDefault()
+   
+    await createUserWithEmailAndPassword(auth, mail, password)
+      .then((userCredential) => {
+          // Signed in
+          const user = userCredential.user;
+          console.log(user);
+          const id = auth.currentUser?.uid.toString()
+          signUp(id)
+          navigate("/features/skills")
+          // ...
+      })
+      .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          console.log(errorCode, errorMessage);
+          // ..
+      });
+
+ 
+  }
+  
+ 
+
+
+  
+  
+  
   
   return (
     <main className='flex w-full justify-center items-center  min-h-[100vh] h-fit'>
@@ -169,7 +189,7 @@ const Register = () => {
             />
           </div>
           <div className='flex justify-center w-full items-center h-[15vh]'>
-            <button onClick={() => handleSubmit()}  type='submit' className='bg-[#ED8129] text-[white] text-[1.3rem] w-[35%] p-1 rounded-[8px]'>Signup </button>
+            <button onClick={() => signUp()}  type='submit' className='bg-[#ED8129] text-[white] text-[1.3rem] w-[35%] p-1 rounded-[8px]'>Signup </button>
           </div>
         </form>
       </section> 

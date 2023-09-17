@@ -13,6 +13,7 @@ export default {
         'login_bg': "url('./src/assets/login_img.png')",
         'back': "url('./src/assets/home/back.png')",
         'back_img': "url('./src/assets/home/back_img.png')",
+        'mentor_login': "url('./src/assets/MentorLogin/MentorLogin.png')",
         
       },
       fontFamily:{

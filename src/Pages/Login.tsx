@@ -1,10 +1,54 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 import logo from '../assets/login/logo.png'
 import bottomLogo from '../assets/login/bottomLogo.png'
 import { Link } from 'react-router-dom'
 // import LogoImg from '../assets/login_img.png';
 
 const Login = () => {
+
+  const [email,setEmail] = useState('')
+  const [password,setPassword] = useState('')
+  const [data,setData] = useState({})
+
+
+  const handleSubmit = () => {
+    if(email){
+      const newData = {
+        email : email,
+        password:password,
+      }
+      setData(newData)
+      console.log(newData);
+    }
+  }
+
+
+  useEffect(() => {
+    const sendData = async () => {
+      if (Object.keys(data).length > 0) { // Check if data is not empty
+        fetch('http://localhost:8080/register', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ value: data }),
+        })
+        .then(response => response.json())
+        .then(data => {
+          console.log('Response from backend:', data);
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+        });
+      }
+    }
+  
+    sendData();
+  }, [data]);
+
+
+
+  
   return (
     <div className='flex w-full' >
       <section  className=' w-[60%] h-[100vh]  bg-center bg-cover bg-no-repeat bg-login_bg flex justify-end items-end p-4 text-white '>
@@ -22,6 +66,8 @@ const Login = () => {
             <label className='text-[15px] font-[500]' htmlFor="loginEmail">Mobile No. / Email</label>
             <input 
               type="text" 
+              value={email}
+              onChange={(e)=> setEmail(e.target.value)}
               name="" 
               id="loginEmail"
               required
@@ -32,6 +78,8 @@ const Login = () => {
             <label className='text-[15px] font-[500]' htmlFor="loginEmail">Password</label>
             <input 
               type="password" 
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               name="" 
               id="loginEmail"
               required

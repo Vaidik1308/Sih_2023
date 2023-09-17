@@ -20,8 +20,8 @@ const Course = () => {
               setIsOption2={setIsOption2}
               header1='Learn'
               header2='Progress'
-              path1={'/skills/courses'}
-              path2={'/skills/progress'}
+              path1='/skills/courses'
+              path2='/skills/progress'
             />
             {/* {isOption1 && (
               <CourseContent/>
