@@ -29,8 +29,8 @@ const MentorSignUp = () => {
                     <label htmlFor="mentorFullName">Full Name</label>
                     <input 
                         type="text"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)} 
+                        // value={name}
+                        // onChange={(e) => setName(e.target.value)} 
                         className='border-solid h-[5vh] rounded-md border-gray-400 p-2 w-[95%] outline-none border-[1px]'
                         name="mentorFullName" 
                         id="mentorFullName" 
@@ -82,8 +82,8 @@ const MentorSignUp = () => {
                             size='small' 
                             sx={{width:"100%",borderRadius:"8px !important"}} 
                             type='date'
-                            value={date}
-                            onChange={(e) => setDate(e.target.value)}
+                            value={dob}
+                            onChange={(e) => setDob(e.target.value)}
                         />
 
                     </div>
