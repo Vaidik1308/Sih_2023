@@ -26,6 +26,11 @@ import SavedJobs from '../Pages/Jobs/SavedJobs'
 import MentorDashboard from '../MentorPages/MentorDashboard/MentorDashboard'
 import MentorSignUp from '../MentorPages/MentorSignUp'
 import MentorLogin from '../MentorPages/MentorLogin'
+import YourCommunity from '../MentorPages/Community/YourCommunity'
+import CreateCommunity from '../MentorPages/Community/CreateCommunity'
+import MentorPosts from '../MentorPages/Community/CommunityDetails/MentorPost'
+import CommunityMember from '../MentorPages/Community/CommunityDetails/CommunityMember'
+import CommunityDetails from '../MentorPages/Community/CommunityDetails/CommunityDetails'
 
 const CommonNavigation = () => {
   return (
@@ -43,7 +48,7 @@ const CommonNavigation = () => {
               <Route path='account' element={<Account/>}/>
               <Route path='jobs' element={<Jobs/>} >
                 <Route index path='alljobs' element={<AllJobs/>} />
-                <Route index path='savedjobs' element={<SavedJobs/>} />
+                <Route  path='savedjobs' element={<SavedJobs/>} />
               </Route>
               <Route path='skills' element={<Course/>} >
                 <Route index element={<CourseContent/>}/>
@@ -73,9 +78,16 @@ const CommonNavigation = () => {
             {/* Mentor Routes */}
             <Route path='/mentorSignUp' element={<MentorSignUp/>} />
             <Route path='/mentorLogin' element={<MentorLogin/>} />
-            <Route path='/mentor/:mentorId' element={<MentorDashboard/>} >
-              <Route path='statistics' >
-                <Route index path=''/>
+            <Route path='/mentorFeatures/:mentorId' element={<MentorDashboard/>} >
+              <Route path='community' >
+                <Route index  element={<YourCommunity/>}/>
+                <Route path='yourCommunity'  element={<YourCommunity/>}/>
+                <Route path='communityDetails/:id' element={<CommunityDetails/>} >
+                    <Route index element={<MentorPosts/>} />
+                    <Route path='mentorPosts' element={<MentorPosts/>} />
+                    <Route path='communityMembers' element={<CommunityMember/>} />
+                </Route>
+                <Route path='createCommunity'  element={<CreateCommunity/>}/>
               </Route>
             </Route>
             <Route path='*' element={<Missing/>} />

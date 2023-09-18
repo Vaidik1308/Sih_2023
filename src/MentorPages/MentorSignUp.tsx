@@ -14,6 +14,11 @@ const MentorSignUp = () => {
     const [name, setName] = useState<string>('');
     const [password, setPassword] = useState<string>('');
     const [email, setEmail] = useState<string>('');
+
+
+    const handleSubmit = () => {
+        
+    }
   return (
     <main className='w-[90%] mx-auto'>
         <section className='w-[50%] flex flex-col gap-2'>
@@ -89,7 +94,7 @@ const MentorSignUp = () => {
                     </div>
                 </div>
                 <div className='mt-8 w-[100%] flex justify-center'>
-                    <button className=' rounded-lg w-[45%] bg-[#ED8129] text-white p-2'>Submit</button>
+                    <button className=' rounded-md font-[600] h-[7vh] w-[40%] bg-[#ED8129] text-white p-2'>Submit</button>
                 </div>
             </form>
             <article className=' bg-mentor_login w-[45%] h-[45vh] bg-cover bg-center bg-no-repeat rounded-md flex flex-col justify-center items-center gap-6'>
@@ -106,7 +111,11 @@ const MentorSignUp = () => {
                     </p>
                 </div>
                 <div className='text-[2rem] font-[600]'>
-                    <p>Join us and become a real HER0!</p>
+                    <p>Join us and become a 
+                        <span className='text-[#ED8129]'> real </span>
+                        <span className='text-[#0DB20D]'>HER0</span>
+                        !
+                    </p>
                 </div>
             </article>
             <div className=' right-[600px] -z-10  absolute bottom-4 w-[20%]'>

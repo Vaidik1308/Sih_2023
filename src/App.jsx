@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './App.css'
+import {useLocation} from 'react-router-dom'
 import CommonNavigation from './Navigation/CommonNavigation'
 import Navbar from './Components/Navbar'
 import Footer from './Components/Footer'
@@ -7,6 +8,7 @@ import Scrollbar from "react-custom-scrollbars";
 import { DataProvider } from './context/DataContext'
 
 function App() {
+  const location = useLocation()
   const [count, setCount] = useState(0)
 
   return (
@@ -19,7 +21,9 @@ function App() {
     >
       <DataProvider>
         <div className='w-full min-h-[100vh] font-Inter h-fit'>
-          <Navbar/>
+          {location.pathname === '/' && (
+            <Navbar/>
+          )}
           <CommonNavigation/>
           <Footer/>
         </div>
