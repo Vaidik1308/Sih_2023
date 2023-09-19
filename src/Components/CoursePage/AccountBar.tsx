@@ -13,8 +13,8 @@ const AccountBar = () => {
             <img className='w-full' src={accountPic} alt="" />
         </section>
         <section className='min-w-[50%] flex flex-col gap-1'>
-            <h2 className='text-[1.5rem] font-[500] '>{userData?.name?.length>=6 ? userData.name.slice(0,6): userData.name}</h2>
-            <p>{userData.number}</p>
+            <h2 className='text-[1.5rem] font-[500] '>Ayush Gupta</h2>
+            <p>9115458526</p>
         </section>
         </Link>
     </main>

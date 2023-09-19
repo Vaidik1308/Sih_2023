@@ -31,6 +31,8 @@ import CreateCommunity from '../MentorPages/Community/CreateCommunity'
 import MentorPosts from '../MentorPages/Community/CommunityDetails/MentorPost'
 import CommunityMember from '../MentorPages/Community/CommunityDetails/CommunityMember'
 import CommunityDetails from '../MentorPages/Community/CommunityDetails/CommunityDetails'
+import Statistics from '../MentorPages/Statistics/Statistics'
+import Posts from '../MentorPages/Posts/Posts'
 
 const CommonNavigation = () => {
   return (
@@ -79,6 +81,7 @@ const CommonNavigation = () => {
             <Route path='/mentorSignUp' element={<MentorSignUp/>} />
             <Route path='/mentorLogin' element={<MentorLogin/>} />
             <Route path='/mentorFeatures/:mentorId' element={<MentorDashboard/>} >
+              <Route path='statistics' element={<Statistics/>} />
               <Route path='community' >
                 <Route index  element={<YourCommunity/>}/>
                 <Route path='yourCommunity'  element={<YourCommunity/>}/>
@@ -89,6 +92,7 @@ const CommonNavigation = () => {
                 </Route>
                 <Route path='createCommunity'  element={<CreateCommunity/>}/>
               </Route>
+              <Route path='posts' element={<Posts/>} />
             </Route>
             <Route path='*' element={<Missing/>} />
         </Routes>

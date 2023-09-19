@@ -5,7 +5,7 @@ import {Outlet} from 'react-router-dom'
 const CommunityDetails = () => {
   return (
     <main className='w-full'>
-        <DetailsHeader/>
+        <DetailsHeader path1='/mentorPosts' path2='/communityMembers' />
         <Outlet/>
     </main>
   )
